@@ -1,0 +1,919 @@
+//https://youtu.be/2Uh_tujqkxw
+var cena=1;
+var largura=180;
+var altura= 50;
+var tamanho=80;
+var esquerda=100;
+var direita=300;
+var centro=200;
+
+// meu vetor de animar o background, cena=4.1
+var ima=[];
+var cont=0;
+
+//cronometro
+var crx;
+var cry;
+var crsobre=false;
+var crselec=false;
+var crxdes=0.0;
+var crydes=0.0;
+
+//sapato
+var sax;
+var say;
+var sasobre=false;
+var saselec=false;
+var saxdes=0.0;
+var saydes=0.0;
+
+//botão
+var btx;
+var bty;
+var btsobre=false;
+var btselec=false;
+var btxdes=0.0;
+var btydes=0.0;
+
+//copo
+var cpx;
+var cpy;
+var cpsobre=false;
+var cpselec=false;
+var cpxdes=0.0;
+var cpydes=0.0;
+
+//bola
+var blx;
+var bly;
+var blsobre=false;
+var blselec=false;
+var blxdes=0.0;
+var blydes=0.0;
+
+//regua
+var rex;
+var rey;
+var resobre=false;
+var reselec=false;
+var rexdes=0.0;
+var reydes=0.0;
+
+//bolinho
+var bix;
+var biy;
+var bisobre=false;
+var biselec=false;
+var bixdes=0.0;
+var biydes=0.0;
+
+//pipoca
+var ppx;
+var ppy;
+var ppsobre=false;
+var ppselec=false;
+var ppxdes=0.0;
+var ppydes=0.0;
+
+//ovo
+var ovx;
+var ovy;
+var ovsobre=false;
+var ovselec=false;
+var ovxdes=0.0;
+var ovydes=0.0;
+
+// Apagador, tutorial 
+var bx;
+var by;
+var boxSize = 75;
+var overBox = false;
+var locked = false;
+var xOffset = 0.0;
+var yOffset = 0.0;
+
+function setup() {
+  createCanvas(400, 550);
+  rectMode(CORNER);
+  bx = 200;
+  by = 450;
+  //cr--
+  crx = esquerda;
+  cry = 450;
+  //bi
+  bix = direita;
+  biy = 450;
+  //bl
+  blx = centro;
+  bly = 450;
+  //re--
+  rex = centro;
+  rey = 450;
+  //sa
+  sax = direita;
+  say = 450;
+  //bt
+  btx = esquerda;
+  bty = 450;
+  //cp--
+  cpx = direita;
+  cpy = 450;
+  //pp
+  ppx = centro;
+  ppy = 450;
+  //ov
+  ovx = esquerda;
+  ovy = 450;
+  
+}
+
+function preload(){
+  img=loadImage('Background.png');
+  img0=loadImage('Quadro.png');
+  parabens=loadImage('Parabens.png');
+  apagador=loadImage('Apagador.png');
+  bola=loadImage('Bola.png');
+  bolinho=loadImage('Bolinho.png');
+  botao=loadImage('Botão.png');
+  copo=loadImage('Copo.png');
+  cronometro=loadImage('Cronometro.png');
+  ovo=loadImage('Ovo.png');
+  pipoca=loadImage('Pipoca.png');
+  regua=loadImage('Regua.png');
+  sapato=loadImage('Sapato.png');
+  myFont=loadFont('Fonte.ttf');
+  ima[0]=loadImage('Explicação(0).png');
+  ima[1]=loadImage('Explicação(1).png')
+  ima[2]=loadImage('Explicação(2).png')
+  ima[3]=loadImage('Explicação(3).png')
+  
+}
+
+function draw() {
+//CENA 0, de parabens e obrigada
+  if(cena==0){
+    background(parabens);
+    textFont(myFont);
+    textAlign(CENTER);
+    textSize(30);
+    textStyle(ITALIC);
+    
+    rectMode(CENTER)
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 500, 220, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('E obrigada por jogar!', 200, 505);
+//soumuitocriativa2020.6
+    rectMode(CORNER);
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    textSize(30);
+    noStroke();
+    fill(160);
+    text('Voltar', 337, 43);
+
+  
+  } 
+//CENA 0.1, de parabens
+  else if(cena==0.1){
+    background(parabens);
+    textFont(myFont);
+    textAlign(CENTER);
+    textSize(30);
+    textStyle(ITALIC);
+    
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    textSize(30);
+    noStroke();
+    fill(160);
+    text('Voltar', 337, 43);
+  }
+//CENA 1 ! menu 
+  else if(cena==1){
+    background(img); 
+    
+    textFont(myFont);
+    textAlign(CENTER);
+    textSize(30);
+    textStyle(ITALIC);
+
+    
+//jogar
+    if(mouseX>110 && mouseX<290 && mouseY>190 && mouseY<240 ){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(110, 195, largura, altura);  
+    }
+    noStroke();
+    fill(170, 215, 255);
+    text('Jogar', 200, 230);
+//objetivo
+    if(mouseX>110 && mouseX<290 && mouseY>270 && mouseY<320 ){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(110, 275, largura, altura);  
+       }
+    noStroke();
+    fill(70, 155, 250 );
+    text('Objetivo', 200, 310);
+
+//Tutorial
+    if(mouseX>100 && mouseX<290 && mouseY>355 && mouseY<400){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(110, 355, largura, altura);
+    }
+    noStroke();
+    fill(5, 80, 200 );
+    text('Tutorial', 200, 390);
+// Voltando para a posição inicial.
+  bx=200;
+  by=450;
+  crx = esquerda;
+  cry = 450;
+  //bi
+  bix = direita;
+  biy = 450;
+  //bl
+  blx = centro;
+  bly = 450; 
+  //re
+  rex = centro;
+  rey = 450;
+  //sa
+  sax = direita;
+  say = 450;
+  //bt
+  btx = esquerda;
+  bty = 450;
+  //cp
+  cpx = direita;
+  cpy = 450;
+  //pp
+  ppx = centro;
+  ppy = 450;
+  //ov
+  ovx = esquerda;
+  ovy = 450;
+   }
+// CENA 2 ! ! fase 1 do jogo
+  else if(cena==2 ){
+    textFont(myFont);
+    textSize(30);
+    background(img0);
+    textAlign(CENTER);
+// parte do cronometro
+    stroke(5, 110, 190);
+    if (
+    mouseX > crx - tamanho/2 &&
+    mouseX < crx + tamanho/2 &&
+    mouseY > cry - tamanho/2 &&
+    mouseY < cry + tamanho/2
+  ) {
+    crsobre = true;
+    if (!crselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    crsobre = false;
+  }  
+// imagem e quadrado centralizado
+    imageMode(CENTER);
+    rectMode(CENTER);
+    //cr
+    rect(crx, cry, tamanho, tamanho);
+    image(cronometro, crx, cry, tamanho, tamanho);
+    
+// parte da bola
+    if (
+    mouseX > blx - tamanho/2 &&
+    mouseX < blx + tamanho/2 &&
+    mouseY > bly - tamanho/2 &&
+    mouseY < bly + tamanho/2
+  ) {
+    blsobre = true;
+    if (!blselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    blsobre = false;
+  } 
+    
+    //bl
+    rect(blx, bly, tamanho, tamanho);
+    image(bola, blx, bly,tamanho,tamanho);
+    
+// parte do bolinho
+    if (
+    mouseX > bix - tamanho/2 &&
+    mouseX < bix + tamanho/2 &&
+    mouseY > biy - tamanho/2 &&
+    mouseY < biy + tamanho/2
+  ) {
+    bisobre = true;
+    if (!biselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    bisobre = false;
+  } 
+    //bi
+    rect(bix, biy, tamanho, tamanho);
+    image(bolinho, bix, biy, tamanho, tamanho);
+    
+// troca para a cena 2.1
+    if(crx>15 && crx<385 && cry>60 && cry<275){
+     cena=2.1;
+    }
+    if(blx>15 && blx<385 && bly>60 && bly<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto que'+'\n'+'possui ponteiros!', 115, 350);
+    }
+    if(bix>15 && bix<385 && biy>60 && biy<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto redondo!', 140, 350);
+    }
+    textSize(25);
+    noStroke();
+    fill(10);
+    text('Corrida Olímpica!', 110, 40);
+    fill(255);
+    textSize(20);
+    text('Correr é um esporte bem interessante,\n Teo e Davi foram correr na pista de\n corrida, nessa pista só pode correr um\n por vez, Davi foi o primeiro a correr \n e logo em seguida Teo, o ganhador é\n escolhido por quem correr em menos\n tempo, que objeto posso usar para\n saber quem foi mais rápido? ', 200,85);
+    
+//debug interessante
+    imageMode(CORNER);
+    rectMode(CORNER); 
+    textSize(30);
+//Voltar (2)
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    noStroke();
+    fill(160);
+    text('Voltar', 337, 43);
+}
+// cena fase 2 do jogo 
+  else if(cena==2.1){
+    textFont(myFont);
+    textSize(30);
+    background(img0);
+    textAlign(CENTER);
+// parte do botão;
+    stroke(5, 110, 190);
+    if (
+    mouseX > btx - tamanho/2 &&
+    mouseX < btx + tamanho/2 &&
+    mouseY > bty - tamanho/2 &&
+    mouseY < bty + tamanho/2
+  ) {
+    btsobre = true;
+    if (!btselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    btsobre = false;
+  }
+    imageMode(CENTER);
+    rectMode(CENTER);
+    
+//bt
+    rect(btx, bty, tamanho, tamanho);
+    image(botao, btx, bty, tamanho, tamanho);
+// parte da regua  
+    if (
+    mouseX > rex - tamanho/2 &&
+    mouseX < rex + tamanho/2 &&
+    mouseY > rey - tamanho/2 &&
+    mouseY < rey + tamanho/2
+  ) {
+    resobre = true;
+    if (!reselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    resobre = false;
+  }
+//re 
+    rect(rex,rey, tamanho, tamanho);
+    image(regua,rex,rey, tamanho,tamanho);
+// parte do sapato
+    if (
+    mouseX > sax - tamanho/2 &&
+    mouseX < sax + tamanho/2 &&
+    mouseY > say - tamanho/2 &&
+    mouseY < say + tamanho/2
+  ) {
+    sasobre = true;
+    if (!saselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    sasobre = false;
+  }
+  
+//sa
+    rect(sax, say, tamanho, tamanho);
+    image(sapato, sax, say, tamanho, tamanho);
+// Troca para a cena 2.2  
+    if(rex>15 && rex<385 && rey>60 && rey<275){
+     cena=2.2;
+    }
+    if(btx>15 && btx<385 && bty>60 && bty<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto que'+'\n'+'possui números!', 115, 350);
+    }
+    if(sax>15 && sax<385 && say>60 && say<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto reto!', 140, 350);
+    }
+    textSize(25);
+    noStroke();
+    fill(10);
+    text('Meu lápis', 70, 40);
+    fill(255);
+    textSize(20);
+    text('Elen tem dois lápis grafite, um em \nformato de triângulo e outro redondo, \no favorito de Elen é o triangular e \ndepois apontou seu lápis favorito\n e então observou que tem uma\n diferença de tamanho entre os\n seus lápis, qual objeto posso \nusar para saber a diferença?', 200,85);
+// debugandito 
+    textSize(30);
+    imageMode(CORNER);
+    rectMode(CORNER);
+//Voltar
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    noStroke();
+    fill(160);
+    text('Voltar', 337, 43);
+  }
+// cena fase 3 do jogo 
+  else if(cena==2.2){
+    textFont(myFont);
+    textSize(30);
+    background(img0);
+    textAlign(CENTER);
+//parte do ovo
+    stroke(5, 110, 190);
+    if (
+    mouseX > ovx - tamanho/2 &&
+    mouseX < ovx + tamanho/2 &&
+    mouseY > ovy - tamanho/2 &&
+    mouseY < ovy + tamanho/2
+  ) {
+    ovsobre = true;
+    if (!ovselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    ovsobre = false;
+  }
+    
+    imageMode(CENTER);
+    rectMode(CENTER);
+    //ov
+    rect(ovx,ovy, tamanho,tamanho);
+    image(ovo,ovx,ovy,tamanho,tamanho);
+    
+//parte da pipoca salgadinha, xo pipoca doce.
+    if (
+    mouseX > ppx - tamanho/2 &&
+    mouseX < ppx + tamanho/2 &&
+    mouseY > ppy - tamanho/2 &&
+    mouseY < ppy + tamanho/2
+  ) {
+    ppsobre = true;
+    if (!ppselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    ppsobre = false;
+  }
+    //pp
+    rect(ppx,ppy,tamanho,tamanho);
+    image(pipoca,ppx,ppy,tamanho,tamanho);
+    
+//parte do copo meu amigo
+    if (
+    mouseX > cpx - tamanho/2 &&
+    mouseX < cpx + tamanho/2 &&
+    mouseY > cpy - tamanho/2 &&
+    mouseY < cpy + tamanho/2
+  ) {
+    cpsobre = true;
+    if (!cpselec) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190);
+    cpsobre = false;
+  }
+    //cp
+    rect(cpx,cpy,tamanho,tamanho);
+    image(copo,cpx,cpy,tamanho,tamanho);
+    
+    if(cpx>15 && cpx<385 && cpy>60 && cpy<275){
+     cena=0;
+    }
+    if(ovx>15 && ovx<385 && ovy>60 && ovy<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto que da \npara colocar coisas dentro!', 130, 350);
+    }
+    if(ppx>15 && ppx<385 && ppy>60 && ppy<275){
+      stroke(210, 130, 0);
+      fill(0, 150, 0);
+      rect(200, 520, largura, altura);
+      textSize(20);
+      fill(255);
+      noStroke();
+      text('Tente novamente!', 200, 525);
+      text('Dica: é um objeto parecido!', 140, 350);
+    }
+    textSize(25);
+    noStroke();
+    fill(10);
+    text('Enchendo!', 70, 40);
+    fill(255);
+    textSize(20);
+    text('A mãe de Maria pediu para ela encher \na panela, que está em cima da mesa \naté a metade, para poder ajudar sua \nmãe qual objeto Maria deveria pegar?', 200,120);   
+//meuamigoinseparaveldebugmaisumavezfazendoapresençaparaagalera
+    rectMode(CORNER);
+    imageMode(CORNER);
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    noStroke();
+    fill(160);
+    textSize(30);
+    text('Voltar', 337, 43);
+    
+  }
+// CENA 3 ! ! ! objetivo
+  else if(cena==3){
+    background(img);
+    textSize(20);
+    fill(255);
+    text('Este jogo tem como '+'\n'+'objetivo a habilidade:'+'\n'+'(EF03MA18) escolher a unidade'+'\n'+'de medida e o instrumento mais' +'\n'+ 'apropriado para medições'+ '\n'+'de comprimento, tempo '+ '\n'+'  e capacidade.', 200, 220);
+    
+    
+//voltar   
+    if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    noStroke();
+    fill(160);
+    textSize(30);
+    text('Voltar', 337, 43);
+    
+  }
+// CENA 4 ! ! ! ! tutotial
+  else if(cena==4){
+    background(img0);
+    textAlign(CENTER);
+    textSize(20);
+    fill(255);
+    text('O jogo é bem simples,'+ '\n'+'é apenas clicar,'+ '\n '+ 'segurar e arrastar'+'\n'+'a imagem para o quadro.', 200, 140);
+    stroke(5, 110, 190);
+  if (
+    mouseX > bx - boxSize/2 &&
+    mouseX < bx + boxSize/2 &&
+    mouseY > by - boxSize/2 &&
+    mouseY < by + boxSize/2
+  ) {
+    overBox = true;
+    if (!locked) {
+      stroke(255);
+    }
+  } else {
+    stroke(5, 110, 190 );
+    overBox = false;
+  }
+    
+    
+// quadrado
+  rectMode(CENTER);
+  imageMode(CENTER);
+  rect(bx, by, boxSize, boxSize);
+  image(apagador,bx, by, boxSize, boxSize);
+  
+    
+// Area do quadro negro
+   if(bx>15 && bx<385 && by>60 && by<275){
+     cena=0.1;
+   }
+    
+//voltar
+    imageMode(CORNER);
+    rectMode(CORNER);
+   if(mouseX>275&& mouseX<395 && mouseY>5 && mouseY<55){
+      stroke(210, 130, 0);
+      strokeWeight(5);
+      fill(0, 150, 0);
+      rect(275, 5, 120, altura );
+    }
+    textSize(30);
+    noStroke();
+    fill(160);
+    text('Voltar', 337, 43);
+  }
+// CENA DE ANIMAÇÃO do background
+  else if(cena==4.1){
+    if(cont<4){
+    background(ima[cont]);
+    }else{
+      cena=4;
+      cont=0;
+    }
+  }
+
+}
+
+function mousePressed(){
+  if(cena==0){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+  }
+  if(cena==0.1){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+    
+  }
+  if(cena==1){
+    if(mouseX>110 && mouseX<290 && mouseY>190 && mouseY<240){
+      if(mouseIsPressed){
+        cena=2;
+      }
+    }
+    if(mouseX>110 && mouseX<290 && mouseY>270 && mouseY<320){
+      if(mouseIsPressed){
+        cena=3;
+      }
+    }
+    if(mouseX>100 && mouseX<290 && mouseY>355 && mouseY<400){
+      if(mouseIsPressed){
+        cena=4.1;
+      }
+    }
+  
+  } 
+  if(cena==2){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+//cr
+    if (crsobre) {
+      crselec = true;
+    } else {
+      crselec = false;
+    }
+    crxdes = mouseX - crx;
+    crydes = mouseY - cry;
+//bl
+    if (blsobre) {
+      blselec = true;
+    } else {
+      blselec = false;
+    }
+    blxdes = mouseX - blx;
+    blydes = mouseY - bly;
+//bi
+    
+    if (bisobre) {
+      biselec = true;
+    } else {
+      biselec = false;
+    }
+    bixdes = mouseX - bix;
+    biydes = mouseY - biy;
+    
+  }
+  if(cena==2.1){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+//bt
+    if (btsobre) {
+      btselec = true;
+    } else {
+      btselec = false;
+    }
+    btxdes = mouseX - btx;
+    btydes = mouseY - bty;
+//re
+    if (resobre) {
+      reselec = true;
+    } else {
+      reselec = false;
+    }
+    rexdes = mouseX - rex;
+    reydes = mouseY - rey;
+//bi
+    
+    if (sasobre) {
+      saselec = true;
+    } else {
+      saselec = false;
+    }
+    saxdes = mouseX - sax;
+    saydes = mouseY - say;
+    
+    
+  }
+  if(cena==2.2){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+//ov
+    if (ovsobre) {
+      ovselec = true;
+    } else {
+      ovselec = false;
+    }
+    ovxdes = mouseX - ovx;
+    ovydes = mouseY - ovy;
+//pp
+    if (ppsobre) {
+      ppselec = true;
+    } else {
+      ppselec = false;
+    }
+    ppxdes = mouseX - ppx;
+    ppydes = mouseY - ppy;
+//cp
+    
+    if (cpsobre) {
+      cpselec = true;
+    } else {
+      cpselec = false;
+    }
+    cpxdes = mouseX - cpx;
+    cpydes = mouseY - cpy;
+    
+    
+  }
+  if(cena==3){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+  }
+  if(cena==4){
+    if(mouseX>275 && mouseX<395 && mouseY>5 && mouseY<55){
+      if(mouseIsPressed){
+        cena=1;
+      }
+    }
+    if (overBox) {
+    locked = true;
+    fill(255);
+  } else {
+    locked = false;
+  }
+  xOffset = mouseX - bx ;
+  yOffset = mouseY - by ;
+}
+  if(cena==4.1){
+    if(mouseIsPressed){
+      if(cont>4){
+      cena=4
+      cont=0
+      }else{
+        cont++
+      }
+    }
+  }
+  
+}
+
+function mouseDragged(){
+  if (crselec) {
+    crx = mouseX - crxdes;
+    cry = mouseY - crydes;
+  }
+  else if (blselec) {
+    blx = mouseX - blxdes;
+    bly = mouseY - blydes;
+  }
+  else if (biselec) {
+    bix = mouseX - bixdes;
+    biy = mouseY - biydes;
+  }
+  else if (btselec) {
+    btx = mouseX - btxdes;
+    bty = mouseY - btydes;
+  }
+  else if (reselec) {
+    rex = mouseX - rexdes;
+    rey = mouseY - reydes;
+  }
+  else if (saselec) {
+    sax = mouseX - saxdes;
+    say = mouseY - saydes;
+  }
+  else if (ovselec) {
+    ovx = mouseX - ovxdes;
+    ovy = mouseY - ovydes;
+  }
+  else if (ppselec) {
+    ppx = mouseX - ppxdes;
+    ppy = mouseY - ppydes;
+  }
+  else if (cpselec) {
+    cpx = mouseX - cpxdes;
+    cpy = mouseY - cpydes;
+  }
+  else if (locked) {
+    bx = mouseX - xOffset;
+    by = mouseY - yOffset;
+  }
+}
+
+function mouseReleased(){
+  locked = false;
+  crselec = false;
+  blselec = false;
+  biselec = false;
+  btselec = false;
+  reselec = false;
+  saselec = false;
+  ovselec = false;
+  ppselec = false;
+  cpselec = false;
+}
